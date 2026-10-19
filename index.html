@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#ff0000">
+  <meta name="description" content="Nirbul Video - Modern YouTube-style video platform">
+  <title>Nirbul Video</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="#" class="logo" id="logoBtn">
+        <i class="fas fa-play-circle"></i>
+        <span>Nirbul Video</span>
+      </a>
+    </div>
+    <div class="header-center">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ভিডিও খুঁজুন..." autocomplete="off">
+        <button id="searchBtn" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="profile-btn" id="profileBtn" aria-label="Profile">
+        <i class="fas fa-user-circle"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+    <!-- Home / Video Grid -->
+    <section id="homeSection" class="section active">
+      <div class="section-header">
+        <h2 id="sectionTitle">হোম</h2>
+        <div class="filter-chips" id="filterChips">
+          <button class="chip active" data-filter="all">সব</button>
+          <button class="chip" data-filter="nature">প্রকৃতি</button>
+          <button class="chip" data-filter="funny">মজার</button>
+          <button class="chip" data-filter="education">শিক্ষামূলক</button>
+          <button class="chip" data-filter="animals">প্রাণী</button>
+        </div>
+      </div>
+      <div class="video-grid" id="videoGrid">
+        <!-- Videos rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Trending Section -->
+    <section id="trendingSection" class="section">
+      <div class="section-header">
+        <h2>ট্রেন্ডিং</h2>
+      </div>
+      <div class="video-grid" id="trendingGrid"></div>
+    </section>
+
+    <!-- Shorts Section -->
+    <section id="shortsSection" class="section">
+      <div class="section-header">
+        <h2>শর্টস</h2>
+      </div>
+      <div class="shorts-container" id="shortsContainer">
+        <!-- Shorts rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categoriesSection" class="section">
+      <div class="section-header">
+        <h2>ক্যাটাগরি</h2>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+        <div class="category-card" data-cat="nature">
+          <i class="fas fa-leaf"></i>
+          <span>প্রকৃতি</span>
+        </div>
+        <div class="category-card" data-cat="funny">
+          <i class="fas fa-laugh"></i>
+          <span>মজার</span>
+        </div>
+        <div class="category-card" data-cat="education">
+          <i class="fas fa-graduation-cap"></i>
+          <span>শিক্ষামূলক</span>
+        </div>
+        <div class="category-card" data-cat="animals">
+          <i class="fas fa-paw"></i>
+          <span>প্রাণী</span>
+        </div>
+        <div class="category-card" data-cat="science">
+          <i class="fas fa-flask"></i>
+          <span>বিজ্ঞান</span>
+        </div>
+        <div class="category-card" data-cat="all">
+          <i class="fas fa-th"></i>
+          <span>সব ভিডিও</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Library Section -->
+    <section id="librarySection" class="section">
+      <div class="section-header">
+        <h2>লাইব্রেরি</h2>
+      </div>
+      <div class="library-content">
+        <div class="library-item" id="historyBtn">
+          <i class="fas fa-history"></i>
+          <span>ইতিহাস</span>
+          <small>দেখা ভিডিও</small>
+        </div>
+        <div class="library-item" id="likedBtn">
+          <i class="fas fa-thumbs-up"></i>
+          <span>পছন্দের</span>
+          <small>লাইক করা ভিডিও</small>
+        </div>
+        <div class="library-item">
+          <i class="fas fa-clock"></i>
+          <span>পরে দেখুন</span>
+          <small>সেভ করা ভিডিও</small>
+        </div>
+        <p class="library-note">নোট: এই অ্যাপ্লিকেশনে কোনো লগইন বা সার্ভার নেই। ডেটা শুধু এই ডিভাইসে সংরক্ষিত হয়।</p>
+      </div>
+      <div class="video-grid" id="libraryGrid"></div>
+    </section>
+
+    <!-- Watch Page -->
+    <section id="watchSection" class="section">
+      <div class="watch-container">
+        <div class="player-wrapper">
+          <div id="videoPlayer"></div>
+        </div>
+        <div class="video-info">
+          <h1 id="watchTitle"></h1>
+          <div class="video-meta">
+            <span id="watchViews"></span>
+            <span id="watchDate"></span>
+          </div>
+          <div class="channel-info">
+            <div class="channel-avatar" id="channelAvatar"></div>
+            <div class="channel-details">
+              <h3 id="watchChannel"></h3>
+              <span id="watchSubs">নমুনা চ্যানেল</span>
+            </div>
+            <button class="subscribe-btn" id="subscribeBtn">সাবস্ক্রাইব</button>
+          </div>
+          <div class="video-description" id="watchDescription"></div>
+          <div class="action-buttons">
+            <button class="action-btn" id="likeBtn"><i class="fas fa-thumbs-up"></i> <span>লাইক</span></button>
+            <button class="action-btn" id="dislikeBtn"><i class="fas fa-thumbs-down"></i></button>
+            <button class="action-btn" id="shareBtn"><i class="fas fa-share"></i> শেয়ার</button>
+            <button class="action-btn" id="saveBtn"><i class="fas fa-bookmark"></i> সেভ</button>
+          </div>
+        </div>
+        <div class="related-videos">
+          <h3>সম্পর্কিত ভিডিও</h3>
+          <div id="relatedGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Results -->
+    <section id="searchSection" class="section">
+      <div class="section-header">
+        <h2>সার্চ ফলাফল: <span id="searchQuery"></span></h2>
+      </div>
+      <div class="video-grid" id="searchGrid"></div>
+    </section>
+  </main>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-item active" data-section="home">
+      <i class="fas fa-home"></i>
+      <span>হোম</span>
+    </button>
+    <button class="nav-item" data-section="trending">
+      <i class="fas fa-fire"></i>
+      <span>ট্রেন্ডিং</span>
+    </button>
+    <button class="nav-item" data-section="shorts">
+      <i class="fas fa-bolt"></i>
+      <span>শর্টস</span>
+    </button>
+    <button class="nav-item" data-section="categories">
+      <i class="fas fa-th-large"></i>
+      <span>ক্যাটাগরি</span>
+    </button>
+    <button class="nav-item" data-section="library">
+      <i class="fas fa-folder"></i>
+      <span>লাইব্রেরি</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
