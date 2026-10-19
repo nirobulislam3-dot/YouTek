@@ -1,2 +1,2 @@
 # YouTek
-Nirbul Video - Modern YouTube style video website
+YouTek Video - Modern YouTube style video website
